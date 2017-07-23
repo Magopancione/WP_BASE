@@ -7,11 +7,11 @@ services:
       - "80:80"
     environment:
       WORDPRESS_DB_USER: database
-      WORDPRESS_DB_PASSWORD: kgB7yJCwGYq2jeQH
+      WORDPRESS_DB_PASSWORD: n5afGyVXl7
       WORDPRESS_DB_NAME: wp_database
       WORDPRESS_TABLE_PREFIX: wp_
       WORDPRESS_DB_HOST: mysql_suffix:3306
-      VIRTUAL_HOST: example.com,www.example.com
+      VIRTUAL_HOST: test.com,www.test.com
     volumes:
       - "./wordpress/wp-content/:/var/www/html/wp-content"
     links:
@@ -20,15 +20,15 @@ services:
   mysql:
     image: mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_ROOT_PASSWORD: n5afGyVXl7
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_DATABASE: wp_database
       MYSQL_USER: database
-      MYSQL_PASSWORD: kgB7yJCwGYq2jeQH
+      MYSQL_PASSWORD: n5afGyVXl7
     volumes:
       - "./wordpress/db:/var/lib/mysql"
   wp:
-    image: pattonwebz/docker-wpcli
+    image: sonoilmagopancione/wp_cli
     volumes_from:
       - wordpress
     links:
